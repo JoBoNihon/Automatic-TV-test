@@ -10,21 +10,8 @@ sleep 3;
 $r3Digit;
 for i in $(seq 0 2)
 do
-Aux=1;
-    case ${channel:$i:1} in
-        1)  #${rNum${channel:$i:1}};
-            $rNum_${channel:$i:1};
-            echo "$rNum1";;
-        2)  $rNum2;;
-        3)  $rNum3;;
-        4)  $rNum4;;
-        5)  $rNum5;;
-        6)  $rNum6;;
-        7)  $rNum7;;
-        8)  $rNum8;;
-        9)  $rNum9;;
-        0)  $rNum10;;
-    esac
+    cDigit="rNum${channel:$i:1}";
+    ${!cDigit};
 done
 sleep 5;
 for i in $(seq 0 2) 
