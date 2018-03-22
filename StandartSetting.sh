@@ -17,52 +17,45 @@ function setIP() {
         then
             adb shell input keyevent 56;
         else
-            cDigit="rNum${ip:$i:1}";
-            ${!cDigit};
+            eval \$rNum${ip:$i:1};
         fi
     done
 }
 function setNetMask {
+    netmask="255.255.255.0";
     for i in $(seq 0 12)
     do
-        case $i in
-            0|4|8)          $rNum2;;
-            1|2|5|6|9|10)   $rNum5;;
-            3|7|11)         adb shell input keyevent 56;;
-            12)             $rNum10;;
-        esac
+        if [ ${netmask:$i:1} = "." ];
+        then
+            adb shell input keyevent 56;
+        else
+            eval \$rNum${netmask:$i:1};
+        fi
     done
 }
 function setGateway {
+    gateway="192.168.0.253";
     for i in $(seq 0 12)
     do
-        case $i in
-            0|4)    $rNum1;;
-            1)      $rNum9;;
-            2|10)   $rNum2;;
-            3|7|9)  adb shell input keyevent 56;;
-            5)      $rNum6;;
-            6)      $rNum8;;
-            8)      $rNum10;;
-            11)     $rNum5;;
-            12)     $rNum3;;
-        esac
+        if [ ${gateway:$i:1} = "." ];
+        then
+            adb shell input keyevent 56;
+        else
+            eval \$rNum${gateway:$i:1};
+        fi
     done
 
 }
 function setDNS {
+    dns="192.168.0.185"
     for i in $(seq 0 12)
     do
-        case $i in
-            0|4|10) $rNum1;;
-            1)      $rNum9;;
-            2)      $rNum2;;
-            3|7|9)  adb shell input keyevent 56;;
-            5)      $rNum6;;
-            6|11)   $rNum8;;
-            8)      $rNum10;;   
-            12)     $rNum5;;
-        esac
+        if [ ${dns:$i:1} = "." ];
+        then
+            adb shell input keyevent 56;
+        else
+            eval \$rNum${dns:$i:1};
+        fi
     done
 }   
 

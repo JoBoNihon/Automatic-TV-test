@@ -10,7 +10,7 @@ rNum6="adb shell input keyevent 13";#Button 6
 rNum7="adb shell input keyevent 14";#Button 7
 rNum8="adb shell input keyevent 15";#Button 8
 rNum9="adb shell input keyevent 16";#Button 9
-rNum10="adb shell input keyevent 7";#Button 10
+rNum0="adb shell input keyevent 7";#Button 10
 rNum11="";#Button 11
 rNum12="";#Button 12
 #Mode keys
