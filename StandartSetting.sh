@@ -13,19 +13,13 @@ function repeat_key_and_ok() {
 function setIP() {
     for i in $(seq 0 12)
     do
-        case ${channel:$i:1} in
-            1)  $rNum1;;
-            2)  $rNum2;;
-            3)  $rNum3;;
-            4)  $rNum4;;
-            5)  $rNum5;;
-            6)  $rNum6;;
-            7)  $rNum7;;
-            8)  $rNum8;;
-            9)  $rNum9;;
-            0)  $rNum10;;
-            .)  adb shell input keyevent 56;
-        esac
+        if [ ${ip:$i:1} = "." ];
+        then
+            adb shell input keyevent 56;
+        else
+            cDigit="rNum${ip:$i:1}";
+            ${!cDigit};
+        fi
     done
 }
 function setNetMask {
@@ -85,7 +79,7 @@ done
 repeat_key_and_ok "$rDown" 3
 repeat_key_and_ok "$rLeft" 2
 $rDown;
-read -p "IP : " channel
+read -p "IP : " ip
 sleep 3;
 setIP
 for i in $(seq 0 7)
