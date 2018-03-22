@@ -1,5 +1,4 @@
-# hello-world
+#Automatic-TV-test
 
-Hi Humans!
-
-JoBoNihon here, I like Node.js and Cofeescript!
+A test script for a tv with android.
+Do some simple functions.
