@@ -11,7 +11,7 @@ function repeat_key_and_ok() {
     $rOk;
 }
 function setIP() {
-    for i in $(seq 0 12)
+    for i in $(seq 0 ${#ip})
     do
         if [ ${ip:$i:1} = "." ];
         then
@@ -90,7 +90,7 @@ do
     if [ $i = 0 ];
     then
         adb disconnect;
-        adb connect $channel;
+        adb connect $ip;
     fi
 done
 $rMenu;
