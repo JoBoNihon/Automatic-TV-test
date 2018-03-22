@@ -10,8 +10,7 @@ sleep 3;
 $r3Digit;
 for i in $(seq 0 2)
 do
-    cDigit="rNum${channel:$i:1}";
-    ${!cDigit};
+    eval \$rNum${channel:$i:1};
 done
 sleep 5;
 for i in $(seq 0 2) 
