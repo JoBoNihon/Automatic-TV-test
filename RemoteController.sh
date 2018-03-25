@@ -37,3 +37,6 @@ r3Digit="adb shell input keyevent 114";#3 digit button
 rSubtitle="adb shell input keyevent 140";#Subtitle button
 rSubtitleSize="adb shell input keyevent 131";#Subtitle size button
 rSubtitlePosition="adb shell input keyevent 125";#Subtitle position button
+rHandy="adb shell input keyevent 134";#Handy button
+rHandySize="adb shell input keyevent 135";#Handy size button
+rHandyPosition="adb shell input keyevent 136";#Handy position button
