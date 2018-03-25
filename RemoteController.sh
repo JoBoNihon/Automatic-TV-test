@@ -34,3 +34,6 @@ rChannelUp="adb shell input keyevent 92";#Channel increase button
 rChannelDown="adb shell input keyevent 93";#Channel decrease button
 #Extra keys
 r3Digit="adb shell input keyevent 114";#3 digit button
+rSubtitle="adb shell input keyevent 140";#Subtitle button
+rSubtitleSize="adb shell input keyevent 131";#Subtitle size button
+rSubtitlePosition="adb shell input keyevent 125";#Subtitle position button

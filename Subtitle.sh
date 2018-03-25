@@ -1,21 +1,24 @@
 #!/bin/bash
-adb shell input keyevent 141;
+#Import remote controller keys
+. ./RemoteController.sh
+
+$rDigital;
 sleep 3;
-adb shell input keyevent 8;
+$rNum1;
 sleep 3;
-adb shell input keyevent 140;
+$rSubtitle;
 sleep 3;
 #Test all the sizes
 for i in 0 1
 do
-    adb shell input keyevent 131;
+    $rSubtitleSize;
     sleep 2;
     #Test all positions with both sizes
     for i in 0 1
     do 
-        adb shell input keyevent 125;    
+        $rSubtitlePosition;    
         sleep 2;
     done
 done
 #Test finish
-adb shell input keyevent 140;
+$rSubtitle;
