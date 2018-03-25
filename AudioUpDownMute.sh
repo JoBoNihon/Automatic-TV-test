@@ -2,16 +2,16 @@
 #Import remote controller keys
 . ./RemoteController.sh
 
-mode=25
+mode="Down"
 #Test audio increasing and decreasing
 for i in 0 1
 do
     #Test all levels
     for i in $(seq 0 14)
     do 
-        adb shell input keyevent "$mode";
+        eval \$rVol$mode;
     done
-    mode=24
+    mode="Up"
 done
 #Test mute
 for i in 0 1 

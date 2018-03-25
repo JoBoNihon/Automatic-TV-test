@@ -1,21 +1,24 @@
 #!/bin/bash
-adb shell input keyevent 8;
-adb shell input keyevent 165;
+#Import remote controller keys
+. ./RemoteController.sh
+
+$rNum1;
+$rOSD;
 sleep 5;
-mode=92
+mode="Up"
 #Test all channels increasing and decreasing
 for i in 0 1
 do
     #Test all channels
     for i in $(seq 0 11)
     do 
-        adb shell input keyevent "$mode";    
+        eval \$rChannel$mode;    
         sleep 5;       
     done
-    mode=93
+    mode="Down"
 done
 #Test finish
 for i in $(seq 0 2) 
 do
-    adb shell input keyevent 165;
+    $rOSD;
 done

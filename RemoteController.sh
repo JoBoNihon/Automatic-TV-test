@@ -18,6 +18,7 @@ rDigital="adb shell input keyevent 141";#Digital button
 rBS="adb shell input keyevent 132;";#BS button
 rMenu="adb shell input keyevent 82";#Menu button
 rOSD="adb shell input keyevent 165";#OSD button
+rMedekiku="adb shell input keyevent 142";#Medekiku button
 #Cursor keys
 rUp="adb shell input keyevent 19";#Up button
 rLeft="adb shell input keyevent 22";#Left button
@@ -28,5 +29,8 @@ rOk="adb shell input keyevent 23";#Ok button
 rVolDown="adb shell input keyevent 25";#Volume down button
 rVolUp="adb shell input keyevent 24";#Volume up button
 rMute="adb shell input keyevent 164";#Mute button
+#Channel keys
+rChannelUp="adb shell input keyevent 92";#Channel increase button
+rChannelDown="adb shell input keyevent 93";#Channel decrease button
 #Extra keys
 r3Digit="adb shell input keyevent 114";#3 digit button

@@ -35,7 +35,7 @@ function runTest() {
         "TV + Hand")                        ./Handy.sh;;
         "TV + Subtitle")                    ./Subtitle.sh;;
         "TV + Hand + Subtitle")             ./Subtitle+Handy.sh;;
-        "Use portal site")                  adb shell input keyevent 142;;
+        "Use portal site")                  $rMedekiku;;
         "Standart setting")                 ./StandartSetting.sh;;
         "TV setting")                       ./TVSetting.sh;;
         "Extra setting") ;;
@@ -78,7 +78,7 @@ do
             case $subitem in
                 1)  runTest "Terrestrial digital";;
                 2)  runTest "BS";;
-                3)  runTest "Volume control ";;
+                3)  runTest "Volume control";;
                 4)  runTest "Channel 3digit input";;
                 5)  runTest "Multi Language";;
             esac;;
