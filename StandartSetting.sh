@@ -13,7 +13,7 @@ function repeat_key_and_ok() {
 function setIP() {
     for i in $(seq 0 ${#ip})
     do
-        if [ ${ip:$i:1} = "." ];
+        if [[ ${ip:$i:1} = "." ]];
         then
             adb shell input keyevent 56;
         else
