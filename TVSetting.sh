@@ -2,7 +2,7 @@
 #Import remote controller keys
 . ./RemoteController.sh
 
-# repeat_key_and_ok(keycode, count)
+# repeat_key_and_ok(function, count)
 function repeat_key_and_ok() {
     for i in $(seq 1 $2)
     do
