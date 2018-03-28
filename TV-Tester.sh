@@ -53,8 +53,9 @@ do
 done
 clear;
 #Make results folder
+DATE=`date '+%Y-%m-%d'`
 fPath="Results";
-createFolder "$fPath";
+createFolder "$fPath-$DATE";
 #Ouput Test item menu
 while [ "$exit" != true ]
 do
