@@ -2,14 +2,12 @@
 #Import remote controller keys
 . ./RemoteController.sh
 
-device=`adb devices | grep -v "List"  | awk '{print $1}'`
-#Check if already connected or not
-while [ "$device" = "" ];
-do
-    read -p "Enter IP : " ip
-    adb connect 192.168.0.$ip;
-    device=`adb devices | grep -v "List"  | awk '{print $1}'`
-done
+function createResultFolder() {
+    if [[ ! -d "Results/$1" ]];
+    then 
+        mkdir "Results/$1";  
+    fi
+}
 
 function runTest() {  
     clear;
@@ -29,16 +27,10 @@ function runTest() {
                                             done
                                             sleep 60
                                             adb connect 192.168.0.$ip;;
-        "Terrestrial digital")              if [[ ! -d "Results/$1" ]];
-                                            then 
-                                                mkdir "Results/$1";  
-                                            fi
+        "Terrestrial digital")              createResultFolder $1;
                                             $rDigital;
                                             ./ChannelUpDown.sh;;
-        "BS")                               if [[ ! -d "Results/$1" ]];
-                                            then 
-                                                mkdir "Results/$1";  
-                                            fi
+        "BS")                               createResultFolder $1;
                                             $rBS;
                                             ./ChannelUpDown.sh;;
         "Volume control")                   ./AudioUpDownMute.sh;;
@@ -54,6 +46,15 @@ function runTest() {
         "Secret menu") ;;
     esac
 }
+
+device=`adb devices | grep -v "List"  | awk '{print $1}'`
+#Check if already connected or not
+while [ "$device" = "" ];
+do
+    read -p "Enter IP : " ip
+    adb connect 192.168.0.$ip;
+    device=`adb devices | grep -v "List"  | awk '{print $1}'`
+done
 clear;
 #Ouput Test item menu
 while [ "$exit" != true ]
