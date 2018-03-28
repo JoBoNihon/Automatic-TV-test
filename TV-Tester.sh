@@ -12,7 +12,8 @@ function createFolder() {
 function runTest() {  
     clear;
     echo $1" test";
-    fPath="$fPath $1";
+    fPath="$fPath/$1";
+    createFolder "$fPath";
     case $1 in
         "First boot software")              ;;
         "Boot after setting hardware")      ;;
@@ -24,11 +25,9 @@ function runTest() {
                                             done
                                             sleep 60
                                             adb connect 192.168.0.$ip;;
-        "Terrestrial digital")              createFolder $fPath;
-                                            $rDigital;
+        "Terrestrial digital")              $rDigital;
                                             ./ChannelUpDown.sh;;
-        "BS")                               createFolder $fPath;
-                                            $rBS;
+        "BS")                               $rBS;
                                             ./ChannelUpDown.sh;;
         "Volume control")                   ./AudioUpDownMute.sh;;
         "Channel 3digit input")             ./3Digit.sh;;
@@ -55,7 +54,7 @@ done
 clear;
 #Make results folder
 fPath="Results";
-createFolder $fPath;
+createFolder "$fPath";
 #Ouput Test item menu
 while [ "$exit" != true ]
 do
