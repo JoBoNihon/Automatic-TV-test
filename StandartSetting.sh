@@ -94,4 +94,8 @@ do
     fi
 done
 $rMenu;
+#Print results
+adb shell ip route > addrs.txt;
+ip_addrs=$(awk {'if( NF >=9){print $9;}'} addrs.txt);
+echo "the device ip address is $ip_addrs" | grep $ip
 #Test finish
