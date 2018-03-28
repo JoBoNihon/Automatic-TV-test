@@ -14,7 +14,10 @@ done
 function runTest() {  
     clear;
     echo $1" test";
-    foldername="$1 test results";
+    if [[ ! -d "Results" ]];
+    then 
+        mkdir "Results";  
+    fi
     case $1 in
         "First boot software")              ;;
         "Boot after setting hardware")      ;;
@@ -26,13 +29,17 @@ function runTest() {
                                             done
                                             sleep 60
                                             adb connect 192.168.0.$ip;;
-        "Terrestrial digital")              if [[ ! -d $foldername ]];
+        "Terrestrial digital")              if [[ ! -d "Results/$1" ]];
                                             then 
-                                                mkdir "$foldername";  
+                                                mkdir "Results/$1";  
                                             fi
                                             $rDigital;
                                             ./ChannelUpDown.sh;;
-        "BS")                               $rBS;
+        "BS")                               if [[ ! -d "Results/$1" ]];
+                                            then 
+                                                mkdir "Results/$1";  
+                                            fi
+                                            $rBS;
                                             ./ChannelUpDown.sh;;
         "Volume control")                   ./AudioUpDownMute.sh;;
         "Channel 3digit input")             ./3Digit.sh;;
