@@ -14,6 +14,7 @@ done
 function runTest() {  
     clear;
     echo $1" test";
+    foldername="$1 test results";
     case $1 in
         "First boot software")              ;;
         "Boot after setting hardware")      ;;
@@ -25,7 +26,11 @@ function runTest() {
                                             done
                                             sleep 60
                                             adb connect 192.168.0.$ip;;
-        "Terrestrial digital")              $rDigital;
+        "Terrestrial digital")              if [[ ! -d $foldername ]];
+                                            then 
+                                                mkdir "$foldername";  
+                                            fi
+                                            $rDigital;
                                             ./ChannelUpDown.sh;;
         "BS")                               $rBS;
                                             ./ChannelUpDown.sh;;
