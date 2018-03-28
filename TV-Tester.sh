@@ -2,20 +2,17 @@
 #Import remote controller keys
 . ./RemoteController.sh
 
-function createResultFolder() {
-    if [[ ! -d "Results/$1" ]];
+function createFolder() {
+    if [[ ! -d "$1" ]];
     then 
-        mkdir "Results/$1";  
+        mkdir "$1";  
     fi
 }
 
 function runTest() {  
     clear;
     echo $1" test";
-    if [[ ! -d "Results" ]];
-    then 
-        mkdir "Results";  
-    fi
+    fPath="$fPath $1";
     case $1 in
         "First boot software")              ;;
         "Boot after setting hardware")      ;;
@@ -27,10 +24,10 @@ function runTest() {
                                             done
                                             sleep 60
                                             adb connect 192.168.0.$ip;;
-        "Terrestrial digital")              createResultFolder $1;
+        "Terrestrial digital")              createFolder $fPath;
                                             $rDigital;
                                             ./ChannelUpDown.sh;;
-        "BS")                               createResultFolder $1;
+        "BS")                               createFolder $fPath;
                                             $rBS;
                                             ./ChannelUpDown.sh;;
         "Volume control")                   ./AudioUpDownMute.sh;;
@@ -56,6 +53,9 @@ do
     device=`adb devices | grep -v "List"  | awk '{print $1}'`
 done
 clear;
+#Make results folder
+fPath="Results";
+createFolder $fPath;
 #Ouput Test item menu
 while [ "$exit" != true ]
 do
