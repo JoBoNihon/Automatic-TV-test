@@ -12,8 +12,9 @@ function createFolder() {
 function runTest() {  
     clear;
     echo $1" test";
-    fPath="$fPath/$1";
+    fPath="$fPath$1/";
     createFolder "$fPath";
+    export fPath;
     case $1 in
         "First boot software")              ;;
         "Boot after setting hardware")      ;;
@@ -36,8 +37,7 @@ function runTest() {
         "TV + Subtitle")                    ./Subtitle.sh;;
         "TV + Hand + Subtitle")             ./Subtitle+Handy.sh;;
         "Use portal site")                  $rMedekiku;;
-        "Standart setting")                 export fPath;
-                                            ./StandartSetting.sh;;
+        "Standart setting")                 ./StandartSetting.sh;;
         "TV setting")                       ./TVSetting.sh;;
         "Extra setting") ;;
         "Secret menu") ;;
@@ -55,7 +55,7 @@ done
 clear;
 #Make results folder
 DATE=`date '+%Y-%m-%d'`
-fPath="Results-$DATE";
+fPath="Results-$DATE/";
 createFolder "$fPath";
 #Ouput Test item menu
 while [ "$exit" != true ]

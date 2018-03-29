@@ -12,8 +12,12 @@ do
     #Test all channels
     for i in $(seq 0 11)
     do 
-        eval \$rChannel$mode;    
-        sleep 5;       
+        eval \$rChannel$mode; 
+        pName="Screen-$mode-$i.png";  
+        adb shell screencap -p "/sdcard/$pName";
+        sleep 5;
+        adb pull "/sdcard/$pName" > "$fPath$pName"
+        adb shell rm "/sdcard/$pName";         
     done
     mode="Down"
 done
