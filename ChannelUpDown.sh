@@ -16,8 +16,9 @@ do
         pName="Screen-$mode-$i.png";  
         adb shell screencap -p "/sdcard/$pName";
         sleep 5;
-        adb pull "/sdcard/$pName" > "$fPath$pName"
-        adb shell rm "/sdcard/$pName";         
+        adb pull "/sdcard/$pName" > "$fPath$pName";
+        adb shell rm "/sdcard/$pName";  
+        rm "$pName";
     done
     mode="Down"
 done
