@@ -57,7 +57,11 @@ function setDNS {
             eval \$rNum${dns:$i:1};
         fi
     done
-}   
+} 
+function strindex() { 
+  x="${1%%$2*}"
+  [[ "$x" = "$1" ]] && echo -1 || echo "${#x}"
+}  
 
 $rMenu;
 sleep 2;
@@ -95,7 +99,11 @@ do
 done
 $rMenu;
 #Print results
-adb shell ip route > addrs.txt;
-ip_addrs=$(awk {'if( NF >=9){print $9;}'} addrs.txt);
-echo "the device ip address is $ip_addrs" | grep $ip
+if [[ adb shell ip route | grep -o "$ip" = "$ip" ]];
+then
+    echo "Ip setted correctly" > Ip_Test_Results.txt;
+else
+    echo "Ip set up problem" > Ip_Test_Results.txt;
+fi
 #Test finish
+
