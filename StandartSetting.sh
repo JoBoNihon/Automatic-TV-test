@@ -99,11 +99,12 @@ do
 done
 $rMenu;
 #Print results
-if [[ adb shell ip route | grep -o "$ip" = "$ip" ]];
+cIp=echo adb shell ip route | grep -o "$ip";
+if [[ "$cIp" = "$ip" ]];
 then
-    echo "Ip setted correctly" > Ip_Test_Results.txt;
+    echo "Ip setted correctly" > "$fPath/Ip_Test_Results.txt";
 else
-    echo "Ip set up problem" > Ip_Test_Results.txt;
+    echo "Ip set up problem" > "$fPath/Ip_Test_Results.txt";
 fi
 #Test finish
 

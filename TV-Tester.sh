@@ -36,7 +36,8 @@ function runTest() {
         "TV + Subtitle")                    ./Subtitle.sh;;
         "TV + Hand + Subtitle")             ./Subtitle+Handy.sh;;
         "Use portal site")                  $rMedekiku;;
-        "Standart setting")                 ./StandartSetting.sh;;
+        "Standart setting")                 export fPath;
+                                            ./StandartSetting.sh;;
         "TV setting")                       ./TVSetting.sh;;
         "Extra setting") ;;
         "Secret menu") ;;
@@ -54,8 +55,8 @@ done
 clear;
 #Make results folder
 DATE=`date '+%Y-%m-%d'`
-fPath="Results";
-createFolder "$fPath-$DATE";
+fPath="Results-$DATE";
+createFolder "$fPath";
 #Ouput Test item menu
 while [ "$exit" != true ]
 do
