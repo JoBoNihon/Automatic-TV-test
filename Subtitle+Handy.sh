@@ -26,7 +26,7 @@ do
             #Test all handy positions with both sizes
             for i in $(seq 0 3)
             do 
-                $rHandyPosition;    
+                $rHandyPosition;  
                 sleep 2;
             done
         done

@@ -8,6 +8,7 @@ $rNum1;
 sleep 3;
 $rSubtitle;
 sleep 3;
+sMode="Big"
 #Test all the sizes
 for i in 0 1
 do
@@ -17,8 +18,14 @@ do
     for i in 0 1
     do 
         $rSubtitlePosition;    
+        pName="Screen-$sMode-$i.png";  
+        adb shell screencap -p "/sdcard/$pName";
         sleep 2;
+        adb pull "/sdcard/$pName" > "$fPath$pName";
+        adb shell rm "/sdcard/$pName";  
+        rm "$pName";
     done
+    $sMode="Small"
 done
 #Test finish
 $rSubtitle;

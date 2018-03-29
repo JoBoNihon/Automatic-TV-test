@@ -10,6 +10,12 @@ do
     for i in $(seq 0 14)
     do 
         eval \$rVol$mode;
+        pName="Screen-$mode-$i.png";  
+        adb shell screencap -p "/sdcard/$pName";
+        sleep 1;
+        adb pull "/sdcard/$pName" > "$fPath$pName";
+        adb shell rm "/sdcard/$pName";  
+        rm "$pName";
     done
     mode="Up"
 done
