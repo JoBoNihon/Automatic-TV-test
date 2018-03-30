@@ -20,6 +20,7 @@ do
         adb pull "/sdcard/$pName" > "$fPath$pName";
         adb shell rm "/sdcard/$pName";  
         rm "$pName";
+        mv -f "$pName" "$fPath$pName"; 
     done
     $hMode="Small";
 done
