@@ -2,8 +2,7 @@
 #Import remote controller keys
 . ./RemoteController.sh
 
-# repeat_key_and_ok(keycode, count)
-function repeat_key_and_ok() {
+function Navigate() {
     for i in $(seq 1 $2)
     do
         $1;
@@ -73,8 +72,8 @@ do
     2|3)    $rNum3;;
     esac
 done
-repeat_key_and_ok "$rDown" 3
-repeat_key_and_ok "$rLeft" 2
+Navigate "$rDown" 3
+Navigate "$rLeft" 2
 $rDown;
 read -p "IP : " ip
 sleep 3;
