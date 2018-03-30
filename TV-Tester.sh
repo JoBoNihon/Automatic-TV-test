@@ -1,11 +1,48 @@
 #!/bin/bash
 #Import remote controller keys
 . ./RemoteController.sh
+function tFinish() {
+    for i in $(seq 0 3)
+    do
+        case $i in
+        0)      echo -n "Exiting";;
+        1|2)    echo -n ".";;
+        3)      echo ".";;
+        esac
+        sleep 1;
+    done
+    exit;
+}
 
 function createFolder() {
     if [[ ! -d "$1" ]];
     then 
         mkdir "$1";  
+    else
+        echo "There are already test results from today."
+        read -p "Do you want to delete old records? : " fDelete
+        if [ ${fDelete^^} = "YES" ];
+        then
+            rm -rf "$1";
+            mkdir "$1";
+        else
+            if [ ${fDelete^^} = "NO" ];
+            then
+                read -p "Do you want rename it?" fRename
+                if [ ${fRename^^} = "YES" ];
+                then
+                    read -p "Input there the folder name you wish :" fName
+                    mkdir "$fName"
+                    fPath="$fName/";
+                else
+                    echo "Wait until tomorrow to test again";
+                    tFinish;
+                fi
+            else
+                echo "Input is not correct";
+                tFinish;
+            fi
+        fi
     fi
 }
 
