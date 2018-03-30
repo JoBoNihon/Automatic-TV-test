@@ -2,6 +2,14 @@
 #Import remote controller keys
 . ./RemoteController.sh
 
+function takeScreenshot() {
+    pName="Screen-$1-$i.png";
+    adb shell screencap -p "/sdcard/$pName";
+    adb pull "/sdcard/$pName" > "$fPath$pName";
+    adb shell rm "/sdcard/$pName"; 
+    mv -f "$pName" "$fPath$pName"; 
+}
+
 mode="Down"
 #Test audio increasing and decreasing
 for i in 0 1
@@ -10,12 +18,7 @@ do
     for i in $(seq 0 14)
     do 
         eval \$rVol$mode;
-        pName="Screen-$mode-$i.png";  
-        adb shell screencap -p "/sdcard/$pName";
-        sleep 1;
-        adb pull "/sdcard/$pName" > "$fPath$pName";
-        adb shell rm "/sdcard/$pName";  
-        rm "$pName";
+        takeScreenshot $mode;
     done
     mode="Up"
 done
@@ -23,6 +26,6 @@ done
 for i in 0 1 
 do
     $rMute;
-    sleep 3;
+    takeScreenshot "Mute";
 done
 #Test finish
