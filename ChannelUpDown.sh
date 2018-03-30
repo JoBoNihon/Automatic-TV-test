@@ -13,12 +13,13 @@ do
     for i in $(seq 0 11)
     do 
         eval \$rChannel$mode; 
-        pName="Screen-$mode-$i.png";  
+        pName="Screen-$mode-$i.png"; 
+        sleep 5; 
         adb shell screencap -p "/sdcard/$pName";
-        sleep 5;
+        sleep 2;
         adb pull "/sdcard/$pName" > "$fPath$pName";
-        adb shell rm "/sdcard/$pName";  
-        rm "$pName";
+        adb shell rm "/sdcard/$pName"; 
+        mv -f "$pName" "$fPath$pName"; 
     done
     mode="Down"
 done
