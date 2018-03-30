@@ -24,11 +24,10 @@ do
             for i in $(seq 0 3)
             do 
                 $rHandyPosition; 
-                pName="Screen-$hMode-$i.png";  
+                pName="Screen-$sSize-$sPosition-$hSize-$i.png";  
                 adb shell screencap -p "/sdcard/$pName";
                 adb pull "/sdcard/$pName" > "$fPath$pName";
                 adb shell rm "/sdcard/$pName";  
-                rm "$pName";
                 mv -f "$pName" "$fPath$pName"; 
             done
             $hSize="Big";

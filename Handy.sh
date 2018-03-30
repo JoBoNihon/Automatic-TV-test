@@ -16,7 +16,6 @@ do
         adb shell screencap -p "/sdcard/$pName";
         adb pull "/sdcard/$pName" > "$fPath$pName";
         adb shell rm "/sdcard/$pName";  
-        rm "$pName";
         mv -f "$pName" "$fPath$pName"; 
     done
     $hMode="Big";
