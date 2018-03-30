@@ -5,9 +5,9 @@ function tFinish() {
     for i in $(seq 0 3)
     do
         case $i in
-        0)      echo -n "Exiting";;
-        1|2)    echo -n ".";;
-        3)      echo ".";;
+            0)      echo -n "Exiting ";;
+            1|2)    echo -n ".";;
+            3)      echo ".";;
         esac
         sleep 1;
     done
@@ -79,6 +79,21 @@ function runTest() {
         "Extra setting") ;;
         "Secret menu") ;;
     esac
+    fPath="Results-$DATE/";
+    if [[ ! -d "$fPath" ]];
+    then
+        echo "The date has changed.";
+        mkdir "$fPath";
+        for i in $(seq 0 3)
+        do
+            case $i in
+                0)      echo -n "Creating new folder ";;
+                1|2)    echo -n ".";;
+                3)      echo ".";;
+            esac
+        sleep 1;
+        done
+    fi
 }
 
 device=`adb devices | grep -v "List"  | awk '{print $1}'`
