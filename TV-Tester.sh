@@ -59,7 +59,6 @@ function runTest() {
         "Boot after setting software")      for i in $(seq 0 1)
                                             do
                                                 $rOnOff;
-                                                sleep 3
                                             done
                                             sleep 60
                                             adb connect 192.168.0.$ip;;

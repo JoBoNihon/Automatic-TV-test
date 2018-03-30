@@ -4,7 +4,6 @@
 
 $rNum1;
 $rOSD;
-sleep 5;
 mode="Up"
 #Test all channels increasing and decreasing
 for i in 0 1
@@ -13,10 +12,8 @@ do
     for i in $(seq 0 11)
     do 
         eval \$rChannel$mode; 
-        pName="Screen-$mode-$i.png"; 
-        sleep 5; 
+        pName="Screen-$mode-$i.png";  
         adb shell screencap -p "/sdcard/$pName";
-        sleep 2;
         adb pull "/sdcard/$pName" > "$fPath$pName";
         adb shell rm "/sdcard/$pName"; 
         mv -f "$pName" "$fPath$pName"; 

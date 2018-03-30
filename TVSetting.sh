@@ -10,9 +10,15 @@ function repeat_key_and_ok() {
     done
     $rOk;
 }
+function takeScreenshot() {
+    pName="Screen-$i.png";
+    adb shell screencap -p "/sdcard/$pName";
+    adb pull "/sdcard/$pName" > "$fPath$pName";
+    adb shell rm "/sdcard/$pName"; 
+    mv -f "$pName" "$fPath$pName"; 
+}
 
 $rMenu;
-sleep 2;
 for i in $(seq 0 4)
 do
     case $i in
@@ -35,19 +41,19 @@ do
                     repeat_key_and_ok "$rLeft" 1  
                 else
                     repeat_key_and_ok "$rLeft" 1
-                    sleep 10
+                    takeScreenshot;
                 fi;;
         3|7)      if [ $i = 3 ];
                 then    
                     repeat_key_and_ok "$rRitgh" 2
                 else
                     repeat_key_and_ok "$rRitgh" 1
-                    sleep 10
+                    takeScreenshot;
                 fi;;
         6|8)    if [ $i = 8 ];
                 then
                     repeat_key_and_ok "$rUp" 1
-                    sleep 10 
+                    takeScreenshot; 
                 else
                     repeat_key_and_ok "$rUp" 1
                 fi;;

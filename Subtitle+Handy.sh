@@ -3,36 +3,40 @@
 . ./RemoteController.sh
 
 $rDigital;
-sleep 3;
 $rNum1;
-sleep 3;
 $rSubtitle;
-sleep 3;
 $rHandy;
-sleep 3;
+sSize="Small";
 #Test all subtitles the sizes
 for i in 0 1
 do
     $rSubtitleSize;
-    sleep 2;
+    sPosition="Bottom";
     #Test all subtitles positions with both sizes
     for i in 0 1
     do 
+        hSize="Small";
         #Test all the handy sizes
         for i in 0 1
         do
             $rHandySize;
-            sleep 2;
             #Test all handy positions with both sizes
             for i in $(seq 0 3)
             do 
-                $rHandyPosition;  
-                sleep 2;
+                $rHandyPosition; 
+                pName="Screen-$hMode-$i.png";  
+                adb shell screencap -p "/sdcard/$pName";
+                adb pull "/sdcard/$pName" > "$fPath$pName";
+                adb shell rm "/sdcard/$pName";  
+                rm "$pName";
+                mv -f "$pName" "$fPath$pName"; 
             done
+            $hSize="Big";
         done
-        $rSubtitlePosition;    
-        sleep 2;
+        $rSubtitlePosition;
+        $sPosition="Up";    
     done
+    $sSize="Big";
 done
 #Test finish
 $rHandy;

@@ -56,10 +56,6 @@ function setDNS {
             eval \$rNum${dns:$i:1};
         fi
     done
-} 
-function strindex() { 
-  x="${1%%$2*}"
-  [[ "$x" = "$1" ]] && echo -1 || echo "${#x}"
 }  
 
 $rMenu;

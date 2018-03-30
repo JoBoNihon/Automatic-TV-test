@@ -4,15 +4,18 @@
 
 $rNum1;
 $rOSD;
-sleep 5;
 read -p "Enter TV channel : " channel
-sleep 3;
 $r3Digit;
 for i in $(seq 0 2)
 do
     eval \$rNum${channel:$i:1};
 done
-sleep 5;
+pName="Screen-Input.png";  
+adb shell screencap -p "/sdcard/$pName";
+adb pull "/sdcard/$pName" > "$fPath$pName";
+adb shell rm "/sdcard/$pName";  
+rm "$pName";
+mv -f "$pName" "$fPath$pName"; 
 for i in $(seq 0 2) 
 do
     $rOSD;
